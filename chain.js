@@ -58,6 +58,15 @@ Chain.prototype.get = function() {
   return this.addresses[this.addresses.length - 1];
 };
 
+Chain.prototype.getByIndex = function(index) {
+  var address = this.addressFunction(
+    this.__parent.derive(index),
+    this.__parent.network
+  );
+  
+  return address;
+};
+
 Chain.prototype.getAll = function() {
   if (this.addresses.length === 0) this.__initialize();
 
